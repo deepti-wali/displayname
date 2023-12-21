@@ -5,7 +5,6 @@ const FullNameForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [fullName, setFullName] = useState("");
-  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,8 +18,8 @@ const FullNameForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Concatenate names while handling special characters and numbers
-    const sanitizedFirstName = firstName.replace(/[^a-zA-Z]/g, ""); // Allow only alphabets
-    const sanitizedLastName = lastName.replace(/[^a-zA-Z]/g, ""); // Allow only alphabets
+    const sanitizedFirstName = firstName.replace(/[^a-zA-Z0-9]+$/g, ""); // Allow only alphabets
+    const sanitizedLastName = lastName.replace(/[^a-zA-Z0-9]+$/g, ""); // Allow only alphabets
     const fullNameResult = `${sanitizedFirstName} ${sanitizedLastName}`;
     setFullName(fullNameResult);
   };
