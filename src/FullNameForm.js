@@ -51,9 +51,8 @@ const FullNameForm = () => {
         <br />
         <br />
         <button type="submit">Submit</button>
+        {fullName && <div>Full Name: {fullName}</div>}
       </form>
-
-      {fullName && <div>Full Name: {fullName}</div>}
     </div>
   );
 };
