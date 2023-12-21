@@ -8,16 +8,16 @@ const FullNameForm = () => {
 
   const handleFirstNameChange = (e) => {
     const value = e.target.value;
-    // Validate for characters only using regex
-    if (/^[a-zA-Z]*$/.test(value) || value === "") {
+
+    if (/^[a-zA-Z]+$/.test(value) || value === "") {
       setFirstName(value);
     }
   };
 
   const handleLastNameChange = (e) => {
     const value = e.target.value;
-    // Validate for characters only using regex
-    if (/^[a-zA-Z]*$/.test(value) || value === "") {
+
+    if (/^[a-zA-Z]+$/.test(value) || value === "") {
       setLastName(value);
     }
   };
@@ -56,8 +56,7 @@ const FullNameForm = () => {
 
       {fullName && (
         <div>
-          <h3>Full Name:</h3>
-          <p>{fullName}</p>
+          <p>Full Name:{fullName}</p>
         </div>
       )}
     </div>
