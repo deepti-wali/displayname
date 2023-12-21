@@ -52,12 +52,7 @@ const FullNameForm = () => {
         <button type="submit">Submit</button>
       </form>
 
-      {fullName && (
-        <div>
-          <div>Full Name:</div>
-          <div> {fullName}</div>
-        </div>
-      )}
+      {fullName && <div>Full Name:{fullName}</div>}
     </div>
   );
 };
