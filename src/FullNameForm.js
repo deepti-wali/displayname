@@ -6,44 +6,62 @@ const FullNameForm = () => {
   const [lastName, setLastName] = useState("");
   const [fullName, setFullName] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleFirstNameChange = (e) => {
+    const value = e.target.value;
+    // Validate for characters only using regex
+    if (/^[a-zA-Z]*$/.test(value) || value === "") {
+      setFirstName(value);
+    }
+  };
+
+  const handleLastNameChange = (e) => {
+    const value = e.target.value;
+    // Validate for characters only using regex
+    if (/^[a-zA-Z]*$/.test(value) || value === "") {
+      setLastName(value);
+    }
+  };
+
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    const fullNameResult = `${firstName} ${lastName}`;
-    setFullName(fullNameResult);
+    const resultFullName = `${firstName} ${lastName}`;
+    setFullName(resultFullName);
   };
 
   return (
-    <div className="full-name-form">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
+    <div>
+      <form onSubmit={handleFormSubmit}>
+        <label>
+          First Name:
           <input
             type="text"
-            id="firstName"
-            required
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={handleFirstNameChange}
+            required
           />
-        </div>
-        <div my="3px">
-          <label htmlFor="lasttName">Last Name:</label>
+        </label>
+        <br />
+        <label>
+          Last Name:
           <input
             type="text"
-            id="lastName"
-            required
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={handleLastNameChange}
+            required
           />
-        </div>
+        </label>
+        <br />
         <button type="submit">Submit</button>
       </form>
+
       {fullName && (
-        <div className="result">
-          <h2>Full Name:</h2>
-          <h3>{fullName}</h3>
+        <div>
+          <h3>Full Name:</h3>
+          <p>{fullName}</p>
         </div>
       )}
     </div>
   );
 };
+
 export default FullNameForm;
