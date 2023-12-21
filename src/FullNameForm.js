@@ -37,7 +37,7 @@ const FullNameForm = () => {
           required
         />
         <br />
-        <br />
+
         <label htmlFor="lastName">Last Name:</label>
         <input
           type="text"
@@ -51,8 +51,8 @@ const FullNameForm = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
-
-      {fullName && <div>Full Name:{fullName}</div>}
+      <br />
+      {fullName && <div>Full Name: {fullName}</div>}
     </div>
   );
 };
