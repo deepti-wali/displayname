@@ -80,7 +80,7 @@ function FullNameForm() {
           value={firstName}
           required
           onChange={(e) =>
-            setFirstName(e.target.value.replace(/[^A-Za-z]/gi, ""))
+            setFirstName(e.target.value.replace(/[^a-zA-Z]/, ""))
           }
         />
         <br />
@@ -90,9 +90,7 @@ function FullNameForm() {
           placeholder="Enter last name"
           value={lastName}
           required
-          onChange={(e) =>
-            setLastName(e.target.value.replace(/[^A-Za-z]/gi, ""))
-          }
+          onChange={(e) => setLastName(e.target.value.replace(/[^a-zA-Z]/, ""))}
         />
         <br />
         <button type="submit">submit</button>
