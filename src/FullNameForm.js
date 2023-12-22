@@ -18,7 +18,7 @@ import "./FullNameForm.css";
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 //     // Concatenate names while handling special characters and numbers
-//     const sanitizedFirstName = firstName.replace(/[^a-zA-Z]/g, ""); // Allow only alphabets
+//     const sanitizedFirstName = firstName.replace(/[^a-zA-Z0-9_@./#&+-]/g, ""); // Allow only alphabets
 //     const sanitizedLastName = lastName.replace(/[^a-zA-Z]/g, ""); // Allow only alphabets
 //     const fullNameResult = `${sanitizedFirstName} ${sanitizedLastName}`;
 //     setFullName(fullNameResult);
@@ -80,7 +80,7 @@ function FullNameForm() {
           value={firstName}
           required
           onChange={(e) =>
-            setFirstName(e.target.value.replace(/[^a-zA-Z]/, ""))
+            setFirstName(e.target.value.replace(/[^a-zA-Z0-9_@.!/#&+-]/g, ""))
           }
         />
         <br />
@@ -90,7 +90,9 @@ function FullNameForm() {
           placeholder="Enter last name"
           value={lastName}
           required
-          onChange={(e) => setLastName(e.target.value.replace(/[^a-zA-Z]/, ""))}
+          onChange={(e) =>
+            setLastName(e.target.value.replace(/[^a-zA-Z0-9_@.!/#&+-]/g, ""))
+          }
         />
         <br />
         <button type="submit">submit</button>
