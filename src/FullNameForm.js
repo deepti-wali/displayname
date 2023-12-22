@@ -66,38 +66,38 @@ function FullNameForm() {
 
   const handleConcatenate = (e) => {
     e.preventDefault();
-    const sanitizedFirstName = firstName.replace(/[^A-Za-z]/gi, "");
-    const sanitizedLastName = lastName.replace(/[^A-Za-z]/gi, "");
-    const concatenatedName = `${sanitizedFirstName} ${sanitizedLastName}`;
+    const concatenatedName = `${firstName} ${lastName}`;
     setFullName(concatenatedName);
   };
 
   return (
     <div>
       <form onSubmit={handleConcatenate}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            value={firstName}
-            required
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </label>
+        <label htmlFor="firstName">First Name:</label>
+        <input
+          type="text"
+          placeholder="Enter first name"
+          value={firstName}
+          required
+          onChange={(e) =>
+            setFirstName(e.target.value.replace(/[^A-Za-z]/gi, ""))
+          }
+        />
         <br />
-        <label>
-          Last Name:
-          <input
-            type="text"
-            value={lastName}
-            required
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </label>
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          type="text"
+          placeholder="Enter last name"
+          value={lastName}
+          required
+          onChange={(e) =>
+            setLastName(e.target.value.replace(/[^A-Za-z]/gi, ""))
+          }
+        />
         <br />
         <button type="submit">submit</button>
       </form>
-      <p>Full Name: {fullName}</p>
+      {fullName && <p>Full Name: {fullName}</p>}
     </div>
   );
 }
